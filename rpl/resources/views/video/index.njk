@@ -1,0 +1,42 @@
+{% extends 'video' %}
+
+{% block content %}
+	
+
+<div class="row">
+	<div class="col-md-12 panel-primary">
+
+		<div class="content-box-header panel-heading">
+			<div class="panel-title ">Video</div>
+		</div>
+
+		<div class="content-box-large box-with-header">
+			
+	        {{ form.open({ route: 'video.create' }) }}
+	            {{ form.button('Create','', { class: 'btn btn-success ', style: 'margin: 0 0 20px 0' }) }} 
+	        {{ form.close() }}
+		    
+
+			<table class="table table-condensed">
+				<tr>
+					<th>Title</th>
+					<th>Created Date</th>
+					<th>URl</th>
+					<th>View</th>
+				</tr>
+				{% for video in videos %}
+					<tr>
+						<td>{{video.title}}</td>
+						<td>{{video.created_at}}</td>
+						<td>{{video.video_url}}</td>
+						<td><a href="video/{{video.id}}">View</a></td>
+					</tr>
+				{% endfor %}
+			</table>
+	    </div>
+	</div>
+	
+</div>
+
+	  	
+{% endblock %}

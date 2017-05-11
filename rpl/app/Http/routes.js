@@ -18,5 +18,10 @@
 const Route = use('Route')
 
 Route.on('/').render('admin')
-Route.on('/video').render('video')
+//Route.on('/video').render('video')
 
+Route.resource('/video','VideoController')
+Route.resource('/event','EventController')
+Route.resource('/category','CategoryController')
+Route.resource('/participant','ParticipantController')
+Route.resource('/team','TeamController')

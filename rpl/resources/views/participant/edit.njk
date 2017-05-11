@@ -1,0 +1,83 @@
+{% extends 'category' %}
+
+{% block content %}
+	
+
+<div class="row">
+	<div class="col-md-6 panel-warning">
+
+		<div class="content-box-header panel-heading">
+			<div class="panel-title ">Update Participant</div>
+		</div>
+
+		<div class="content-box-large box-with-header">
+
+		        {% if successMessage %}
+		            <div class="alert alert-success alert-dismissable">
+		                <a href="#" class="close" data-dismiss="alert" aria-label="Close">&times;</a>
+		                <strong>Success!</strong> {{successMessage}}.
+		            </div>
+		        {% endif %}
+
+		        {% if old('errors') %}
+		            <div class="alert alert-danger alert-dismissable">
+		                {% for error in old('errors') %}
+		                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">&times;</a>
+		                    <li> {{ error.message }} </li>
+		                {% endfor %}
+		            </div>
+		        {% endif %}
+
+		        {{ form.open({route: 'participant.update', params: {id: participant[0].id} }) }}
+
+	        		{{csrfField}}
+
+
+	                    <div class="form-group ">
+	                        {{form.label('name','Name') }}
+	                        <div>
+	                            {{ form.text('name', participant[0].name  ,{ class: 'form-control'})}}
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group ">
+	                        {{form.label('name','Country') }}
+	                        <div>
+	                            {{ form.text('country', participant[0].country  ,{ class: 'form-control'})}}
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group ">
+
+	                        {{form.label('name','Time') }}
+	                        <input type="number" name="time" value="{{participant[0].time}}" step="0.001"  class="form-control" />
+	                    </div>  
+
+	                    <div class="form-group "> 
+                        	{{form.label('','Status') }}
+                            <select name="status" class="form-control">
+                            	{% for category in categories %}
+                            		{% if category.id == participant[0].category_id %}
+                            			<option value="{{category.id}}" selected="selected">{{category.name}}</option>
+                            		{% else %}
+                            			<option value="{{category.id}}">{{category.name}}</option>
+                            		{% endif %}
+                            	{% endfor %}
+							  		
+							</select>
+                        </div>
+
+                    
+
+	                    {{ form.submit('Update','submit', { class: 'btn btn-success', style: 'margin-top: 20px'}) }}
+
+
+	            {{ form.close() }}
+
+
+	    </div>
+	</div>
+</div>
+
+	  	
+{% endblock %}

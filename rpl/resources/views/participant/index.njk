@@ -1,0 +1,44 @@
+{% extends 'participant' %}
+
+{% block content %}
+	
+
+<div class="row">
+	<div class="col-md-8 panel-primary">
+
+		<div class="content-box-header panel-heading">
+			<div class="panel-title ">Participants</div>
+		</div>
+
+		<div class="content-box-large box-with-header">
+			
+	        {{ form.open({ route: 'participant.create' }) }}
+	            {{ form.button('Create','', { class: 'btn btn-success ', style: 'margin: 0 0 20px 0' }) }} 
+	        {{ form.close() }}
+		    
+
+			<table class="table table-condensed">
+				<tr>
+					<th>Name</th>
+					<th>Country</th>
+					<th>Time</th>
+					<th>Category</th>
+					<th>View</th>
+				</tr>
+				{% for participant in participants %}
+					<tr>
+						<td>{{participant.name}}</td>
+						<td>{{participant.country}}</td>
+						<td>{{participant.time}}</td>
+						<td>{{participant.category.name}}
+						<td><a href="participant/{{participant.id}}">View</a></td>
+					</tr>
+				{% endfor %}
+			</table>
+	    </div>
+	</div>
+	
+</div>
+
+	  	
+{% endblock %}

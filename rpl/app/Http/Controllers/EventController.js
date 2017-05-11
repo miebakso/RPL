@@ -6,7 +6,7 @@ const Event = use('App/Model/Event')
 class EventController {
 
   * index(request, response) {
-    const events = yield Event.query().orderBy('created_at','desc')
+    const events = yield Event.query().orderBy('created_at','desc').fetch()
     yield response.sendView('event/index', { events:events.toJSON() })
   }
 
@@ -24,18 +24,18 @@ class EventController {
         .flash()
       response.redirect('back')
     }
-    yield Video.create(videoData)
+    yield Event.create(eventData)
     yield response.sendView('event/create', {successMessage: 'Created Event Successfully'})
   }
 
   * show(request, response) {
     const event = yield Event.findBy('id',request.param('id'))
-    yield response.sendView('video/show', { event:event.toJSON() })
+    yield response.sendView('event/show', { event:event.toJSON() })
   }
 
   * edit(request, response) {
     const event = yield Event.findBy('id',request.param('id'))
-    yield response.sendView('video/edit', { event:event.toJSON() })
+    yield response.sendView('event/edit', { event:event.toJSON() })
   }
 
   * update(request, response) {
@@ -64,7 +64,7 @@ class EventController {
   }
 
   * detail(request, response) {
-    const events = yield Event.query().orderBy('created_at','desc')
+    const events = yield Event.query().orderBy('created_at','desc').fetch()
     yield response.sendView('/event/detail', {events:events.toJSON()})
   }
 

@@ -1,0 +1,56 @@
+{% extends 'category' %}
+
+{% block content %}
+	
+
+<div class="row">
+	<div class="col-md-8 panel-primary">
+
+		<div class="content-box-header panel-heading">
+			<div class="panel-title ">Category</div>
+		</div>
+
+		<div class="content-box-large box-with-header">
+			
+	        {{ form.open({ route: 'category.create' }) }}
+	            {{ form.button('Create','', { class: 'btn btn-success ', style: 'margin: 0 0 20px 0' }) }} 
+	        {{ form.close() }}
+		    
+
+			<table class="table table-condensed">
+				<tr>
+					<th>Name</th>
+					<th>Created Date</th>
+					<th>status</th>
+					<th>Type</th>
+					<th>View</th>
+				</tr>
+				{% for category in categories %}
+					<tr>
+						<td>{{category.name}}</td>
+						<td>{{category.created_at}}</td>
+						<td>
+							{% if category.status == 0 %}
+								<p style="color:green">In Progress</p>
+							{% else %}
+								<p style="color:red">Done</p>
+							{% endif %}
+						</td>
+						<td>
+							{% if category.type == 0 %}
+								<p>Individual</p>
+							{% else %}
+								<p>Team</p>
+							{% endif %}
+						</td>
+						<td><a href="category/{{category.id}}">View</a></td>
+					</tr>
+				{% endfor %}
+			</table>
+	    </div>
+	</div>
+	
+</div>
+
+	  	
+{% endblock %}

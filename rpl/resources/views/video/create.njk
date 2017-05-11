@@ -1,0 +1,59 @@
+{% extends 'video' %}
+
+{% block content %}
+	
+
+<div class="row">
+	<div class="col-md-6 panel-success">
+
+		<div class="content-box-header panel-heading">
+			<div class="panel-title ">Video</div>
+		</div>
+
+		<div class="content-box-large box-with-header">
+
+		        {% if successMessage %}
+		            <div class="alert alert-success alert-dismissable">
+		                <a href="#" class="close" data-dismiss="alert" aria-label="Close">&times;</a>
+		                <strong>Success!</strong> {{successMessage}}.
+		            </div>
+		        {% endif %}
+
+		        {% if old('errors') %}
+		            <div class="alert alert-danger alert-dismissable">
+		                {% for error in old('errors') %}
+		                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">&times;</a>
+		                    <li> {{ error.message }} </li>
+		                {% endfor %}
+		            </div>
+		        {% endif %}
+
+		        {{ form.open({route: 'video.store'}) }}
+
+	        		{{csrfField}}
+
+
+	                    <div class="form-group ">
+	                        {{form.label('name','Title') }}
+	                        <div>
+	                            {{ form.text('title','',{ class: 'form-control'})}}
+	                        </div>
+	                    </div> 
+
+	                    <div class="form-group "> 
+                        	{{form.label('url','URL') }}
+                            {{ form.text('video_url','',{ class: 'form-control'})}}
+                        </div>
+
+	                    {{ form.submit('Create','submit', { class: 'btn btn-success', style: 'margin-top: 20px'}) }}
+
+
+	            {{ form.close() }}
+
+
+	    </div>
+	</div>
+</div>
+
+	  	
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'event' %}
+
+{% block content %}
+	
+
+<div class="row">
+	<div class="col-md-12 panel-primary">
+
+		<div class="content-box-header panel-heading">
+			<div class="panel-title ">Events</div>
+		</div>
+
+		<div class="content-box-large box-with-header">
+			
+			{{ form.open({ route: 'event.create' }) }}
+	            {{ form.button('Create','', { class: 'btn btn-success ', style: 'margin: 0 0 20px 0' }) }} 
+	        {{ form.close() }}
+
+			<table class="table table-condensed">
+				<tr>
+					<th>Title</th>
+					<th>Created Date</th>
+					<th>Start Time</th>
+					<th>End Time</th>
+					<th>Description</th>
+					<th>View</th>
+				<tr>
+				{% for event in events %}
+					<tr>
+						<td>{{event.title}}</td>
+						<td>{{event.created_at}}</td>
+						<td>{{event.start}}</td>
+						<td>{{event.end}}</td>
+						<td>{{event.description}}</td>
+						<td><a href="event/{{event.id}}">View</a><td>
+					</tr>
+				{% endfor %}
+			</table>
+	    </div>
+	</div>
+	
+</div>
+
+	  	
+{% endblock %}

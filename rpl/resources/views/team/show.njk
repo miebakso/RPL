@@ -1,0 +1,74 @@
+{% extends 'category' %}
+
+{% block content %}
+	
+
+<div class="row">
+	<div class="col-md-8 panel-info">
+
+		<div class="content-box-header panel-heading">
+			<div class="panel-title ">Category Detail</div>
+		</div>
+
+		<div class="content-box-large box-with-header">
+			<div class="form-horizontal">
+                 
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Name</label>
+                    <div class="col-sm-6">
+                        <p class="form-control-static">{{category.name}}</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Created Date</label>
+                    <div class="col-sm-6">
+                        <p class="form-control-static">{{category.created_at}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-sm-2 control-label">Status</label>
+                    <div class="col-sm-6">
+                        <p class="form-control-static">
+                        	{% if category.status == 0 %}
+						  		<p style="color:green">In Progress</p>
+						  	{% else %}
+							  	<p style="color:red">Done</p>
+							{% endif %}
+                        </p>
+                    </div>
+                </div>
+
+                 <div class="form-group">
+                    <label for="inputPassword" class="col-sm-2 control-label">Type</label>
+                    <div class="col-sm-6">
+                        <p class="form-control-static">
+
+                        	{% if category.type == 0 %}
+						  		Individual
+						  	{% else %}
+							  	Team
+							{% endif %}
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-2 control-label">
+	            {{ form.open({ route: 'category.edit', params: {id: category.id} }) }}
+	            	{{ form.button('Update','', { class: 'btn btn-success ',  style:'float:right;'}) }}
+		        {{ form.close() }}
+		    </div>
+		    <div class="form-control-static">
+		        {{ form.open({ route: 'category.destroy', params: {id: category.id} }) }}
+		            {{csrfField}}
+		            {{ form.button('Delete','', { class: 'btn btn-danger ' }) }} 
+		        {{ form.close() }}
+		    </div>
+	    </div>
+	</div>
+	
+</div>
+
+	  	
+{% endblock %}

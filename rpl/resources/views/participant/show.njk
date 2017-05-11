@@ -1,0 +1,63 @@
+{% extends 'participant' %}
+
+{% block content %}
+	
+
+<div class="row">
+	<div class="col-md-8 panel-info">
+
+		<div class="content-box-header panel-heading">
+			<div class="panel-title ">Participant Detail</div>
+		</div>
+
+		<div class="content-box-large box-with-header">
+			<div class="form-horizontal">
+                 
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Name</label>
+                    <div class="col-sm-6">
+                        <p class="form-control-static">{{participant[0].name}}</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Country</label>
+                    <div class="col-sm-6">
+                        <p class="form-control-static">{{participant[0].country}}</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Time</label>
+                    <div class="col-sm-6">
+                        <p class="form-control-static">{{participant[0].time}}</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Category</label>
+                    <div class="col-sm-6">
+                        <p class="form-control-static">{{participant[0].category.name}}</p>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-sm-2 control-label">
+	            {{ form.open({ route: 'participant.edit', params: { id: participant[0].id } }) }}
+	            	{{ form.button('Update','', { class: 'btn btn-success ',  style:'float:right;'}) }}
+		        {{ form.close() }}
+		    </div>
+		    <div class="form-control-static">
+		        {{ form.open({ route: 'participant.destroy', params: {id: participant[0].id} }) }}
+		            {{csrfField}}
+		            {{ form.button('Delete','', { class: 'btn btn-danger ' }) }} 
+		        {{ form.close() }}
+		    </div>
+	    </div>
+	</div>
+	
+</div>
+
+	  	
+{% endblock %}

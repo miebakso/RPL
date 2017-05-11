@@ -6,7 +6,7 @@ const Video = use('App/Model/Video')
 class VideoController { 
 
   * index(request, response) {
-    const videos = yield Video.query().orderBy('created_at','desc')
+    const videos = yield Video.query().orderBy('created_at','desc').fetch()
     yield response.sendView('video/index', { videos:videos.toJSON() })
   }
 

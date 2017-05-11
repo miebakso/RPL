@@ -1,0 +1,54 @@
+{% extends 'video' %}
+
+{% block content %}
+	
+
+<div class="row">
+	<div class="col-md-8 panel-info">
+
+		<div class="content-box-header panel-heading">
+			<div class="panel-title ">Video Detail</div>
+		</div>
+
+		<div class="content-box-large box-with-header">
+			<div class="form-horizontal">
+                 
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Title</label>
+                    <div class="col-sm-6">
+                        <p class="form-control-static">{{video.title}}</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Created Date</label>
+                    <div class="col-sm-6">
+                        <p class="form-control-static">{{video.created_at}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-sm-2 control-label">URL</label>
+                    <div class="col-sm-6">
+                        <p class="form-control-static">{{video.video_url}}</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-2 control-label">
+	            {{ form.open({ route: 'video.edit', params: {id: video.id} }) }}
+	            	{{ form.button('Update','', { class: 'btn btn-success ',  style:'float:right;'}) }}
+		        {{ form.close() }}
+		    </div>
+		    <div class="form-control-static">
+		        {{ form.open({ route: 'video.destroy', params: {id: video.id} }) }}
+		            {{csrfField}}
+		            {{ form.button('Delete','', { class: 'btn btn-danger ' }) }} 
+		        {{ form.close() }}
+		    </div>
+	    </div>
+	</div>
+	
+</div>
+
+	  	
+{% endblock %}

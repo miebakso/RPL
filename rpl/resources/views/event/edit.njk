@@ -1,0 +1,69 @@
+{% extends 'event' %}
+
+{% block content %}
+	
+
+<div class="row">
+	<div class="col-md-6 panel-warning">
+
+		<div class="content-box-header panel-heading">
+			<div class="panel-title ">Update Event</div>
+		</div>
+
+		<div class="content-box-large box-with-header">
+
+		        {% if successMessage %}
+		            <div class="alert alert-success alert-dismissable">
+		                <a href="#" class="close" data-dismiss="alert" aria-label="Close">&times;</a>
+		                <strong>Success!</strong> {{successMessage}}.
+		            </div>
+		        {% endif %}
+
+		        {% if old('errors') %}
+		            <div class="alert alert-danger alert-dismissable">
+		                {% for error in old('errors') %}
+		                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">&times;</a>
+		                    <li> {{ error.message }} </li>
+		                {% endfor %}
+		            </div>
+		        {% endif %}
+
+		        {{ form.open({route: 'event.update', params: {id: event.id} }) }}
+
+	        		{{csrfField}}
+
+
+	                    <div class="form-group ">
+	                        {{form.label('name','Title') }}
+	                        <div>
+	                            {{ form.text('title', event.title  ,{ class: 'form-control'})}}
+	                        </div>
+	                    </div> 
+
+	                    <div class="form-group"> 
+                        	{{ form.label('start','Start Time') }}
+                            <input type="time" name="start" class="form-control" value="{{event.start}}">
+                        </div>
+
+                        <div class="form-group "> 
+                        	{{form.label('start','End Time') }}
+                            <input type="time" name="end" class="form-control" value="{{event.end}}">
+                        </div>
+
+                        <div class="form-group ">
+	                        {{form.label('description','Description') }}
+	                        {{ form.textarea('description', event.description ,{ class: 'form-control', rows: '4' }) }}
+	                    </div>
+
+	                    {{ form.submit('Update','submit', { class: 'btn btn-success', style: 'margin-top: 20px'}) }}
+
+
+	            {{ form.close() }}
+
+
+	    </div>
+	</div>
+</div>
+
+	  	
+{% endblock %}
