@@ -1,0 +1,56 @@
+{% extends 'competition' %}
+
+{% block content %}
+	
+
+<div class="row">
+	<div class="col-md-6 panel-success">
+
+		
+
+		
+			{% for event in events %}
+				<div class="content-box-header panel-heading">
+					<div class="panel-title ">Event</div>
+				</div>
+		        <div class="content-box-large box-with-header" style="margin-botton:20px">
+		        	<div class="form-horizontal">
+                 
+		                <div class="form-group">
+		                    <label class="col-sm-2 control-label">Title</label>
+		                    <div class="col-sm-6">
+		                        <p class="form-control-static">{{event.title}}</p>
+		                    </div>
+		                </div>
+
+
+		                <div class="form-group">
+		                    <label for="inputPassword" class="col-sm-2 control-label">Start Time</label>
+		                    <div class="col-sm-6">
+		                        <p class="form-control-static">{{event.start}}</p>
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label for="inputPassword" class="col-sm-2 control-label">End Time</label>
+		                    <div class="col-sm-6">
+		                        <p class="form-control-static">{{event.end}}</p>
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label for="inputPassword" class="col-sm-2 control-label">Description</label>
+		                    <div class="col-sm-6">
+		                        <p class="form-control-static">{{event.description}}</p>
+		                    </div>
+		                </div>
+
+		            </div>
+		        </div>
+		    {% endfor %}
+
+	</div>
+</div>
+
+	  	
+{% endblock %}

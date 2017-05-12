@@ -1,0 +1,71 @@
+{% extends 'competition' %}
+
+{% block content %}
+	
+
+<div class="row">
+
+		        		{% if teams[0] %}
+		        		<div class="col-md-12 panel-success">
+
+	
+							<div class="content-box-header panel-heading">
+								<div class="panel-title ">Final</div>
+							</div>
+				        	<div class="content-box-large box-with-header" style="margin-botton:20px">
+			        		<table class="table table-condensed">
+								<tr>
+									<th>Team</th>
+									<th>Country</th>
+									<th>Player 1</th>
+									<th>Player 2</th>
+									<th>Player 3</th>
+									<th>Player 4</th>
+									<th>Time</th>
+								</tr>
+								{% for team in teams %}
+									<tr>
+										<td>{{team.name}}</td>
+										<td>{{team.country}}</td>
+										<td>{{team.name1}}</td>
+										<td>{{team.name2}}</td>
+										<td>{{team.name3}}</td>
+										<td>{{team.name4}}</td>
+										<td>{{team.time}}</td>
+									</tr>
+								{% endfor %}
+							</table>
+							</div>
+						</div>
+					</div>
+					{% else %}
+						<div class="col-md-8 panel-success">
+
+	
+							<div class="content-box-header panel-heading">
+								<div class="panel-title ">Final</div>
+							</div>
+					        	<div class="content-box-large box-with-header" style="margin-botton:20px">
+								<table class="table table-condensed">
+									<tr>
+										<th>Name</th>
+										<th>Country</th>
+										<th>Time</th<
+									</tr>
+									{% for participant in participants %}
+										<tr>
+											<td>{{participant.name}}</td>
+											<td>{{participant.country}}</td>
+											<td>{{participant.time}}</td>
+										</tr>
+									{% endfor %}
+								</table>
+
+								 </div>
+								</div>
+							</div>
+					{% endif %}
+
+
+	  	
+{% endblock %}

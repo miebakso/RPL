@@ -1,0 +1,39 @@
+{% extends 'competition' %}
+
+{% block content %}
+	
+
+<div class="row">
+	<div class="col-md-8 panel-success">
+
+	
+				<div class="content-box-header panel-heading">
+					<div class="panel-title ">Category</div>
+				</div>
+		        <div class="content-box-large box-with-header" style="margin-botton:20px">
+		        	<table class="table table-condensed">
+						<tr>
+							<th>Category</th>
+							<th>Type</th>
+							<th>View</th>
+						</tr>
+						{% for category in categories %}
+							<tr>
+								<td>{{category.name}}</td>
+								<td>
+									{% if category.type == 0 %}
+										<p>Individual</p>
+									{% else %}
+										<p>Team</p>
+									{% endif %}
+								</td>
+								<td><a href="/competition/category/{{category.id}}">View</a></td>
+							</tr>
+						{% endfor %}
+					</table>
+		        </div>
+	</div>
+</div>
+
+	  	
+{% endblock %}
