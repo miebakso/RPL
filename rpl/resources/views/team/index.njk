@@ -1,4 +1,4 @@
-{% extends 'category' %}
+{% extends 'team' %}
 
 {% block content %}
 	
@@ -7,12 +7,12 @@
 	<div class="col-md-8 panel-primary">
 
 		<div class="content-box-header panel-heading">
-			<div class="panel-title ">Category</div>
+			<div class="panel-title ">Teams</div>
 		</div>
 
 		<div class="content-box-large box-with-header">
 			
-	        {{ form.open({ route: 'category.create' }) }}
+	        {{ form.open({ route: 'team.create' }) }}
 	            {{ form.button('Create','', { class: 'btn btn-success ', style: 'margin: 0 0 20px 0' }) }} 
 	        {{ form.close() }}
 		    
@@ -20,30 +20,26 @@
 			<table class="table table-condensed">
 				<tr>
 					<th>Name</th>
-					<th>Created Date</th>
-					<th>status</th>
-					<th>Type</th>
+					<th>Country</th>
+					<th>Player 1</th>
+					<th>Player 2</th>
+					<th>Player 3</th>
+					<th>Player 4</th>
+					<th>Time</th>
+					<th>Category</th>
 					<th>View</th>
 				</tr>
-				{% for category in categories %}
+				{% for team in teams %}
 					<tr>
-						<td>{{category.name}}</td>
-						<td>{{category.created_at}}</td>
-						<td>
-							{% if category.status == 0 %}
-								<p style="color:green">In Progress</p>
-							{% else %}
-								<p style="color:red">Done</p>
-							{% endif %}
-						</td>
-						<td>
-							{% if category.type == 0 %}
-								<p>Individual</p>
-							{% else %}
-								<p>Team</p>
-							{% endif %}
-						</td>
-						<td><a href="category/{{category.id}}">View</a></td>
+						<td>{{team.name}}</td>
+						<td>{{team.country}}</td>
+						<td>{{team.name1}}</td>
+						<td>{{team.name2}}</td>
+						<td>{{team.name3}}</td>
+						<td>{{team.name4}}</td>
+						<td>{{team.time}}</td>
+						<td>{{team.category.name}}
+						<td><a href="team/{{team.id}}">View</a></td>
 					</tr>
 				{% endfor %}
 			</table>

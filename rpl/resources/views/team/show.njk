@@ -1,4 +1,4 @@
-{% extends 'category' %}
+{% extends 'team' %}
 
 {% block content %}
 	
@@ -7,60 +7,77 @@
 	<div class="col-md-8 panel-info">
 
 		<div class="content-box-header panel-heading">
-			<div class="panel-title ">Category Detail</div>
+			<div class="panel-title ">Team Detail</div>
 		</div>
 
 		<div class="content-box-large box-with-header">
 			<div class="form-horizontal">
                  
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Name</label>
+                    <label class="col-sm-2 control-label">Team Name</label>
                     <div class="col-sm-6">
-                        <p class="form-control-static">{{category.name}}</p>
+                        <p class="form-control-static">{{team[0].name}}</p>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Created Date</label>
+                    <label class="col-sm-2 control-label">Country</label>
                     <div class="col-sm-6">
-                        <p class="form-control-static">{{category.created_at}}</p>
+                        <p class="form-control-static">{{team[0].country}}</p>
                     </div>
                 </div>
+
                 <div class="form-group">
-                    <label for="inputPassword" class="col-sm-2 control-label">Status</label>
+                    <label class="col-sm-2 control-label">Player 1</label>
                     <div class="col-sm-6">
-                        <p class="form-control-static">
-                        	{% if category.status == 0 %}
-						  		<p style="color:green">In Progress</p>
-						  	{% else %}
-							  	<p style="color:red">Done</p>
-							{% endif %}
-                        </p>
+                        <p class="form-control-static">{{team[0].name1}}</p>
                     </div>
                 </div>
 
-                 <div class="form-group">
-                    <label for="inputPassword" class="col-sm-2 control-label">Type</label>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Player 2</label>
                     <div class="col-sm-6">
-                        <p class="form-control-static">
-
-                        	{% if category.type == 0 %}
-						  		Individual
-						  	{% else %}
-							  	Team
-							{% endif %}
-                        </p>
+                        <p class="form-control-static">{{team[0].name2}}</p>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Player 3Player 4</label>
+                    <div class="col-sm-6">
+                        <p class="form-control-static">{{team[0].name3}}</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Player 4</label>
+                    <div class="col-sm-6">
+                        <p class="form-control-static">{{team[0].name4}}</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Time</label>
+                    <div class="col-sm-6">
+                        <p class="form-control-static">{{team[0].time}}</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Category</label>
+                    <div class="col-sm-6">
+                        <p class="form-control-static">{{team[0].category.name}}</p>
+                    </div>
+                </div>
+
 
             </div>
             <div class="col-sm-2 control-label">
-	            {{ form.open({ route: 'category.edit', params: {id: category.id} }) }}
+	            {{ form.open({ route: 'team.edit', params: { id: team[0].id } }) }}
 	            	{{ form.button('Update','', { class: 'btn btn-success ',  style:'float:right;'}) }}
 		        {{ form.close() }}
 		    </div>
 		    <div class="form-control-static">
-		        {{ form.open({ route: 'category.destroy', params: {id: category.id} }) }}
+		        {{ form.open({ route: 'team.destroy', params: {id: team[0].id} }) }}
 		            {{csrfField}}
 		            {{ form.button('Delete','', { class: 'btn btn-danger ' }) }} 
 		        {{ form.close() }}

@@ -1,4 +1,4 @@
-{% extends 'category' %}
+{% extends 'team' %}
 
 {% block content %}
 	
@@ -7,7 +7,7 @@
 	<div class="col-md-6 panel-success">
 
 		<div class="content-box-header panel-heading">
-			<div class="panel-title ">Category</div>
+			<div class="panel-title ">Team</div>
 		</div>
 
 		<div class="content-box-large box-with-header">
@@ -28,24 +28,60 @@
 		            </div>
 		        {% endif %}
 
-		        {{ form.open({route: 'category.store'}) }}
+		        {{ form.open({route: 'team.store'}) }}
 
 	        		{{csrfField}}
 
 
 	                    <div class="form-group ">
-	                        {{form.label('name','Category Name') }}
+	                        {{form.label('name','Team Name') }}
 	                        <div>
 	                            {{ form.text('name','',{ class: 'form-control'})}}
 	                        </div>
-	                    </div> 
+	                    </div>
+
+	                    <div class="form-group ">
+	                        {{form.label('name','Country') }}
+	                        <div>
+	                            {{ form.text('country','',{ class: 'form-control'})}}
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group ">
+	                        {{form.label('name','Player 1') }}
+	                        <div>
+	                            {{ form.text('name1','',{ class: 'form-control'})}}
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group ">
+	                        {{form.label('name','Player 2') }}
+	                        <div>
+	                            {{ form.text('name2','',{ class: 'form-control'})}}
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group ">
+	                        {{form.label('name','Player 3') }}
+	                        <div>
+	                            {{ form.text('name3','',{ class: 'form-control'})}}
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group ">
+	                        {{form.label('name4','Player 4') }}
+	                        <div>
+	                            {{ form.text('name4','',{ class: 'form-control'})}}
+	                        </div>
+	                    </div>  
 
 
 	                    <div class="form-group "> 
-                        	{{form.label('','Type') }}
-                            <select name="type" class="form-control">
-						  		<option value="0" selected="selected">Individual</option>
-						  		<option value="1"><p style="color:red">Team</p></option>
+                        	{{form.label('','Category') }}
+                            <select name="category_id" class="form-control">
+                            	{% for category in categories %}
+						  			<option value="{{category.id}}" >{{category.name}}</option>
+						  		{% endfor %}
 							</select>
                         </div>
 

@@ -63,9 +63,9 @@ class EventController {
     yield response.redirect('/event')
   }
 
-  * detail(request, response) {
+  * events(request, response) {
     const events = yield Event.query().orderBy('created_at','desc').fetch()
-    yield response.sendView('/event/detail', {events:events.toJSON()})
+    yield response.sendView('competition/events', {events:events.toJSON()})
   }
 
 }

@@ -66,6 +66,11 @@ class CategoryController {
     yield response.redirect('/category')
   }
 
+  *category(request, response){
+    const categories = yield Category.query().where('status',1).orderBy('created_at','desc').fetch()
+    yield response.sendView('competition/category', { categories:categories.toJSON() })
+  }
+
 }
 
 module.exports = CategoryController

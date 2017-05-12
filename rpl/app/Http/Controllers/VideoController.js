@@ -63,7 +63,7 @@ class VideoController {
 
   * live(request, response) {
     const video = yield Video.last()
-    yield response.sendView('/video/live', {video:video.toJSON()})
+    yield response.sendView('competition/live', {video:video.toJSON()})
   }
 
 }

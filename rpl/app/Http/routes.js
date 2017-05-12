@@ -25,3 +25,11 @@ Route.resource('/event','EventController')
 Route.resource('/category','CategoryController')
 Route.resource('/participant','ParticipantController')
 Route.resource('/team','TeamController')
+
+Route.on('/competition/home').render('competition/home')
+Route.get('/competition/events','EventController.events')
+Route.get('/competition/live','VideoController.live')
+Route.get('/competition/category','CategoryController.category')
+Route.get('/competition/category/:id','ScoreController.score')
+
+
